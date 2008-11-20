@@ -1,0 +1,2 @@
+page.replace_html :error, error if error
+page.replace_html :notice, notice if notice

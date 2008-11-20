@@ -1,0 +1,13 @@
+<div id="location">
+
+	<h1>I am here... <span id="location_url"></span></h1>
+
+	<div id="more_information">
+		<%= label_tag :name, :class => "text_field huge", :value => @location.name %>
+	</div>
+		
+</div>
+
+<div id="map_container" style="margin-top: 20px;">
+	<%= @map.div %>
+</div>

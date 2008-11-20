@@ -1,0 +1,3 @@
+page.replace_html :location_url,  link_to("http://iamhe.re/#{@location.link}", :html_options => {:class => "iamhere"})
+page.visual_effect :grow, :more_information, :duration => 1.5
+page.visual_effect :highlight, :location_url
