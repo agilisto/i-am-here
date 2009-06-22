@@ -1,0 +1,18 @@
+<% form_for [@location, Comment.new], :id => "new-comment-container" do |f| %>
+  <h3> New Comment </h3>
+  <p>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :comment, "Comment" %>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= submit_tag "Post Comment" %>
+  </p>
+<% end %>
+
+<div id="comments-container">
+  <%= render :partial => @location.comments %>
+</div>
