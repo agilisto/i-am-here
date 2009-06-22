@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   geocode_ip_address :only => [:new]  
   
   before_filter :create_map, :except => [:index]
-  before_filter :find_location, :only => [:show]
+  before_filter :find_location, :only => [:show, :edit, :update]
   
   # GET /locations
   # GET /locations.xml
@@ -47,9 +47,7 @@ class LocationsController < ApplicationController
   end
 
   # GET /locations/1/edit
-  def edit
-    @location = Location.find(params[:id])
-  end
+  def edit; end
 
   # POST /locations
   # POST /locations.xml
@@ -73,8 +71,6 @@ class LocationsController < ApplicationController
   # PUT /locations/1
   # PUT /locations/1.xml
   def update
-    @location = Location.find(params[:id])
-
     respond_to do |format|
       if @location.update_attributes(params[:location])
         flash[:notice] = 'Location was successfully updated.'
@@ -121,6 +117,7 @@ class LocationsController < ApplicationController
   private
   def find_location
     @location = Location.find_by_link(params[:id])
+    @comment = Comment.new
   end
   
   def create_draggable(lat = DEFAULT_LATITUDE, lng = DEFAULT_LONGITUDE)
