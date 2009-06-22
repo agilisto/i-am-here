@@ -2,8 +2,13 @@
 
 	<h1>I am here... <span id="location_url"></span></h1>
 
-	<div id="more_information">
-		<%= label_tag :name, :class => "text_field huge", :value => @location.name %>
+	<div>
+		<%= label_tag :name, @location.name,  :class => "text_field huge" %>
+        <ul>
+        <li><%= @location.description %> </li>
+        <li><%= @location.latitude %></li>
+        <li><%= @location.longitude %></li>
+        </ul>
 	</div>
 		
 </div>

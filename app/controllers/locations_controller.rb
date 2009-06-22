@@ -6,7 +6,7 @@ DEFAULT_LONGITUDE = 31.025566
 class LocationsController < ApplicationController
   geocode_ip_address :only => [:new]  
   
-  before_filter :create_map
+  before_filter :create_map, :except => [:index]
   before_filter :find_location, :only => [:show]
   
   # GET /locations
@@ -24,7 +24,9 @@ class LocationsController < ApplicationController
   # GET /locations/1.xml
   def show
     create_marker
-    @map.show_map_blowup(GLatLng.new([@location.latitude,@location.longitude]), :mapType => :G_HYBRID_MAP)
+    @map.center_zoom_on_bounds_init([ [@location.latitude,@location.longitude],
+        [@location.latitude,@location.longitude]])
+    #@map.show_map_blowup(GLatLng.new([@location.latitude,@location.longitude]), :mapType => :G_HYBRID_MAP)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -118,7 +120,7 @@ class LocationsController < ApplicationController
   
   private
   def find_location
-     @location = Location.find(params[:id])
+    @location = Location.find_by_link(params[:id])
   end
   
   def create_draggable(lat = DEFAULT_LATITUDE, lng = DEFAULT_LONGITUDE)
@@ -136,10 +138,10 @@ class LocationsController < ApplicationController
   end
   
   def create_marker
-     marker = GMarker.new([@location.latitude,@location.longitude], :name => "marker", :title => @location.name, 
-       :info_window => @location.description, :bouncy => true)
+    marker = GMarker.new([@location.latitude,@location.longitude], :name => "marker", :title => @location.name,
+      :info_window => @location.description, :bouncy => true)
        
-     @map.overlay_global_init(marker, "marker")
-     marker
-   end
+    @map.overlay_global_init(marker, "marker")
+    marker
+  end
 end

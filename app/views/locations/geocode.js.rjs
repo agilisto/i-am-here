@@ -2,3 +2,5 @@ page << @draggable.set_lat_lng(GLatLng.new([@loc.lat, @loc.lng]))
 page << @map.set_zoom(12)
 page << @map.pan_to(GLatLng.new([@loc.lat,@loc.lng]))
 page << @map.show_map_blowup(GLatLng.new([@loc.lat,@loc.lng]), :mapType => :G_HYBRID_MAP)
+page['location_longitude'].value = @loc.lng
+page['location_latitude'].value = @loc.lat
