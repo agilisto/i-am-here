@@ -58,7 +58,7 @@ input.text_field.huge {
 	font-weight:normal;
 	line-height:normal;
 }
-input.text_field, textarea {
+input[type=text], input.text_field, textarea {
 	-x-system-font:none;
 	background:#FFFFFF url(/images/input_bg.gif) repeat-x scroll center top;
 	border:1px solid #BBBBBB;
@@ -76,6 +76,11 @@ input.text_field, textarea {
 	outline-style:none;
 	outline-width:0;
 	padding:7px;
+}
+
+textarea {
+    width: 300px;
+    height: 150px;
 }
 .wide {
 	max-width:100%;
@@ -128,6 +133,7 @@ element.style {
 	padding:0 15px;
 	text-shadow:1px 1px #719E03;
 }
+
 
 #location label {
 	color:#323C42;

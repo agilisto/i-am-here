@@ -27,8 +27,7 @@
 				:complete => hide_element(:spinner),
 				:html => {:class => "big_button", :submit => :location} %>
 				
-				
-			<%= f.submit "Save Me!", :class => "big_button" %>
+			<%= f.submit "Save Me!", :id => 'save-me-button', :class => "big_button" %>
 			
 			<div id="spinner" style="display:none;float:right;">
 				<%= image_tag 'ajax-loader.gif' %>
