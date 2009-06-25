@@ -1,5 +1,11 @@
+<% if defined? new_comment %>
+  <div id="new-comment"> &nbsp; </div>
+<% end %>
+
 <div class="comment">
   <h2><%= comment.title %></h2>
-  <p><%= comment.comment %></p>
   <span class="date"><%= comment.created_at %></span>
+  <br clear="all" />
+  <p><%= comment.comment %></p>
 </div>
+

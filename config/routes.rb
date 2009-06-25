@@ -1,10 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.resources :tags
   map.resources :comments
   map.resources :locations, :new => {:geocode => :get}  do |location|
     location.resources :comments
   end
 
+  
   
   map.root :controller => 'locations', :action => 'new'
   # The priority is based upon order of creation: first created -> highest priority.

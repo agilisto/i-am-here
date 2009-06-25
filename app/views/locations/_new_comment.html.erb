@@ -1,5 +1,5 @@
-<% form_for [@location, Comment.new], :id => "new-comment-container" do |f| %>
-  <h3> New Comment </h3>
+<% form_remote_for [@location, Comment.new] do |f| %>
+  <h2> New Comment </h2>
   <p>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title %>
@@ -9,10 +9,12 @@
     <%= f.text_area :comment %>
   </p>
   <p>
-    <%= submit_tag "Post Comment" %>
+    <%= submit_tag "Post Comment", :class => "big_button" %>
   </p>
 <% end %>
 
 <div id="comments-container">
+  <h2> Comments </h2>
+  <div id="new-comment"> &nbsp; </div>
   <%= render :partial => @location.comments %>
 </div>

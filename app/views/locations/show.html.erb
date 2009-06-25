@@ -1,20 +1,20 @@
 <div id="location">
 
-	<h1>I am here... <span id="location_url"></span></h1>
+  <h1>I am here... <span id="location_url">
+<%= "#{@location.name}"%>
+  <%= @location.to_micro_format %>
+</span></h1>
+  <p id="description"><%= @location.description %></p>
 
-	<div>
-		<%= label_tag :name, @location.name,  :class => "text_field huge" %>
-        <ul>
-        <li><%= @location.description %> </li>
-        <li><%= @location.latitude %></li>
-        <li><%= @location.longitude %></li>
-        </ul>
-	</div>
-		
+  <%= render :partial => 'tags/tag_cloud' %>
+  
+  <br clear="all"/>
+  <%= link_to "Comments", "#new-comment" %>
+
 </div>
 
 <div id="map_container" style="margin-top: 20px;">
-	<%= @map.div %>
+  <%= @map.div %>
 </div>
 
 <%= render :partial => "locations/new_comment" %>

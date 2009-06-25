@@ -1,42 +1,44 @@
+<h1>Where is this? <div id="location_url"></div></h1>
+
 <div id="location">
-	<% remote_form_for(@location) do |f| %>
+  <% remote_form_for(@location) do |f| %>
+    <%= f.error_messages %>
 
-	<h1>Where is this? <span id="location_url"></span></h1>
-	
+    <%= f.text_field :location, :class => "text_field huge wide" %>
 
-	  <%= f.error_messages %>
 
-	    <%= f.text_field :location, :class => "text_field huge wide" %>
-		
-		
-		<%= f.hidden_field :longitude %>
-		<%= f.hidden_field :latitude %>
-		
-		<div id="more_information">
-			<%= f.label :name %>
-			<%= f.text_field :name, :class => "text_field huge"%>
-		
-			<%= f.label :description %>
-			<%= f.text_field :description, :class => "text_field huge wide "%>
-		</div>
-		
-		<div style="margin-top: 30px;">
-		    <%= submit_to_remote :pin_point, "Pinpoint Me!", 
-				:url => geocode_new_location_path, 
-				:before => show_element(:spinner),
-				:complete => hide_element(:spinner),
-				:html => {:class => "big_button", :submit => :location} %>
-				
-			<%= f.submit "Save Me!", :id => 'save-me-button', :class => "big_button" %>
-			
-			<div id="spinner" style="display:none;float:right;">
-				<%= image_tag 'ajax-loader.gif' %>
-			</div>
-		</div>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :latitude %>
 
-	<% end %>
+    <div id="more_information">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "text_field huge"%>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, :class => "text_field huge wide "%>
+
+      <%= f.label :tag_list, "Tags" %>
+      <%= f.text_field :tag_list, :class => "text_field huge wide" %>
+
+    </div>
+
+    <div style="margin-top: 30px;">
+      <%= submit_to_remote :pin_point, "Pinpoint Me!",
+        :url => geocode_new_location_path,
+        :before => show_element(:spinner),
+        :complete => hide_element(:spinner),
+        :html => {:class => "big_button", :submit => :location} %>
+
+      <%= f.submit "Save Me!", :id => 'save-me-button', :class => "big_button" %>
+
+      <div id="spinner" style="display:none;float:right;">
+        <%= image_tag 'ajax-loader.gif' %>
+      </div>
+    </div>
+
+  <% end %>
 </div>
 
 <div id="map_container" style="margin-top: 20px;">
-	<%= @map.div %>
+  <%= @map.div %>
 </div>
