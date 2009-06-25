@@ -1,0 +1,8 @@
+<h1>Locations tagged with <%= @tag.name %></h1>
+
+<% @locations.each do |location| %>
+  <p>
+    <%= link_to h(location.name), location %>
+    <%= location.description %>
+  </p>
+<% end %>

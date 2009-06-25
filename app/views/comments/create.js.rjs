@@ -1,0 +1,1 @@
+page.replace 'new-comment', :partial => @comment, :locals => {:new_comment => true}

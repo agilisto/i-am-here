@@ -1,0 +1,5 @@
+<ul id="tag-cloud">
+  <% tag_cloud(@location.tag_counts, ['cloud-1', 'cloud-2', 'cloud-3', 'cloud-4', 'cloud-5']) do |tag,level| -%>
+    <li class="<%= level %>"><%=link_to h(tag), tag %> </li>
+  <% end -%>
+</ul>
